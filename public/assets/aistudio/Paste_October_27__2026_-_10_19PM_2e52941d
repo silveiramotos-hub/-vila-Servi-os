@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÁVILA SERVIÇOS INDUSTRIAIS | Usinagem, Caldeiraria e Manutenção Industrial | Alagoinhas - BA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navySteel: {
+                            800: '#152336',
+                            900: '#0b131f',
+                            950: '#060a11'
+                        },
+                        avilaBlue: {
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985'
+                        },
+                        industrialGold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- JSZip para exportação HostGator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        .font-display { font-family: 'Oswald', sans-serif; }
+        .glow-blue {
+            box-shadow: 0 0 35px -5px rgba(2, 132, 199, 0.4);
+        }
+        .glow-gold {
+            box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-navySteel-950 text-slate-100 font-sans antialiased selection:bg-avilaBlue-500 selection:text-white">
+
+    <!-- HostGator Deployment Quick Bar -->
+    <div class="bg-gradient-to-r from-avilaBlue-600 via-sky-600 to-indigo-700 text-white py-2 px-4 text-xs font-semibold shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <i data-lucide="package-check" class="w-4 h-4 shrink-0 text-industrialGold-400"></i>
+                <span><strong>Pronto para Publicar na HostGator:</strong> Arquivo compactado com <code>index.html</code>, <code>.htaccess</code> (HTTPS forçado &amp; cache) e <code>robots.txt</code>.</span>
+            </div>
+            <button id="btnDownloadZipTop" class="inline-flex items-center gap-1.5 bg-navySteel-950 text-white hover:bg-black px-3.5 py-1.5 rounded-lg text-xs font-bold transition shadow border border-sky-400/30">
+                <i data-lucide="download" class="w-3.5 h-3.5 text-industrialGold-400"></i>
+                <span>Baixar ZIP HostGator</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Contact Bar -->
+    <div class="bg-navySteel-900 border-b border-slate-800 text-xs text-slate-300 py-2.5 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+                <span class="flex items-center gap-1.5 text-slate-300">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-industrialGold-400"></i> 
+                    Rodovia Gov. Mário Covas, BR-101, S/N - Coqueiral, Alagoinhas - BA
+                </span>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <span class="flex items-center gap-1.5 text-slate-300">
+                    <i data-lucide="clock" class="w-3.5 h-3.5 text-industrialGold-400"></i> 
+                    Seg a Qui: 07h às 17h | Sex: 07h às 16h
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="mailto:contato@avilaservicos.com.br" class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-avilaBlue-500"></i>
+                    <span>contato@avilaservicos.com.br</span>
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="tel:7534221126" class="flex items-center gap-1 text-slate-300 hover:text-white transition">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-avilaBlue-500"></i>
+                    <span>(75) 3422-1126</span>
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="https://wa.me/5575999150344" target="_blank" rel="noopener" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition font-semibold">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>(75) 99915-0344</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-50 bg-navySteel-950/95 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-avilaBlue-600 to-indigo-800 flex items-center justify-center text-white font-black shadow-lg shadow-avilaBlue-500/20 group-hover:scale-105 transition-transform border border-sky-400/30">
+                        <i data-lucide="cog" class="w-7 h-7 text-white stroke-[2.2]"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-display uppercase tracking-wider font-extrabold text-white block leading-none">
+                            ÁVILA <span class="text-avilaBlue-500">SERVIÇOS</span>
+                        </span>
+                        <span class="text-[10px] sm:text-xs tracking-widest uppercase text-slate-400 font-semibold">Usinagem • Caldeiraria • Manutenção Industrial</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+                    <a href="#inicio" class="text-white hover:text-avilaBlue-500 transition">Início</a>
+                    <a href="#empresa" class="text-slate-300 hover:text-avilaBlue-500 transition">A Empresa</a>
+                    <a href="#servicos" class="text-slate-300 hover:text-avilaBlue-500 transition">Serviços Técnicos</a>
+                    <a href="#diferenciais" class="text-slate-300 hover:text-avilaBlue-500 transition">Diferenciais</a>
+                    <a href="#orcamento" class="text-slate-300 hover:text-avilaBlue-500 transition">Cotação B2B</a>
+                    <a href="#contato" class="text-slate-300 hover:text-avilaBlue-500 transition">Localização</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="https://wa.me/5575999150344?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20proposta%20t%C3%A9cnica%20com%20a%20%C3%80vila%20Servi%C3%A7os%20Industriais" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-avilaBlue-600 hover:bg-avilaBlue-500 text-white font-bold text-sm transition-all duration-200 flex items-center gap-2 glow-blue hover:scale-105 active:scale-95">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        <span>Plantão WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="mobileMenuBtn" aria-label="Abrir Menu" class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800">
+                    <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-navySteel-900 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 text-slate-200 hover:text-avilaBlue-500 border-b border-slate-800/60 mobile-link">Início</a>
+            <a href="#empresa" class="block py-2 text-slate-200 hover:text-avilaBlue-500 border-b border-slate-800/60 mobile-link">Sobre a Ávila</a>
+            <a href="#servicos" class="block py-2 text-slate-200 hover:text-avilaBlue-500 border-b border-slate-800/60 mobile-link">Serviços de Usinagem & Caldeiraria</a>
+            <a href="#diferenciais" class="block py-2 text-slate-200 hover:text-avilaBlue-500 border-b border-slate-800/60 mobile-link">Infraestrutura & Qualidade</a>
+            <a href="#orcamento" class="block py-2 text-slate-200 hover:text-avilaBlue-500 border-b border-slate-800/60 mobile-link">Solicitar Orçamento Industrial</a>
+            <a href="#contato" class="block py-2 text-slate-200 hover:text-avilaBlue-500 mobile-link">Contato e Localização</a>
+            <a href="https://wa.me/5575999150344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20%C3%80vila%20Servi%C3%A7os" target="_blank" class="w-full mt-2 py-3 rounded-xl bg-avilaBlue-600 hover:bg-avilaBlue-500 text-white font-bold text-center block">
+                Atendimento Rápido: (75) 99915-0344
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Imagery -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Usinagem Industrial e Manutenção Pesada Ávila Serviços" 
+                 class="w-full h-full object-cover object-center scale-105 brightness-30 filter">
+            <div class="absolute inset-0 bg-gradient-to-t from-navySteel-950 via-navySteel-950/85 to-navySteel-950/60"></div>
+            <!-- Technical Grid Pattern -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center md:text-left grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-avilaBlue-600/20 border border-avilaBlue-500/40 text-sky-400 text-xs sm:text-sm font-semibold tracking-wide uppercase backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Mais de 12 Anos de Excelência Industrial • Alagoinhas - Bahia
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold uppercase tracking-tight text-white leading-tight">
+                    SOLUÇÕES DE ALTA PRECISÃO EM <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-avilaBlue-500 to-indigo-400">
+                        USINAGEM, CALDEIRARIA &amp; MANUTENÇÃO
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
+                    Parceira estratégica de indústrias petroquímicas, cervejeiras, de celulose, cerâmicas e agroindustriais na Bahia. Equipamentos modernos, corpo técnico qualificado e pontualidade rigorosa em paradas de fábrica.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 pt-3 justify-center md:justify-start">
+                    <a href="#orcamento" class="px-8 py-4 rounded-xl bg-avilaBlue-600 hover:bg-avilaBlue-500 text-white font-bold text-base transition-all duration-200 shadow-xl glow-blue flex items-center justify-center gap-3 hover:-translate-y-0.5">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <span>Solicitar Cotação Técnica</span>
+                    </a>
+                    <a href="#servicos" class="px-8 py-4 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-white border border-slate-700 font-semibold text-base transition-all duration-200 flex items-center justify-center gap-2 hover:border-avilaBlue-500/50">
+                        <i data-lucide="wrench" class="w-5 h-5 text-industrialGold-400"></i>
+                        <span>Ver Nossas Especialidades</span>
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 text-left">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-display font-bold text-sky-400">+12 Anos</div>
+                        <div class="text-xs text-slate-400">No mercado industrial da Bahia</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-display font-bold text-sky-400">BR-101</div>
+                        <div class="text-xs text-slate-400">Acesso logístico privilegiado</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-display font-bold text-sky-400">5.0 ★★★★★</div>
+                        <div class="text-xs text-slate-400">Excelência técnica comprovada</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Live Industrial Card -->
+            <div class="lg:col-span-4 hidden lg:block">
+                <div class="rounded-3xl bg-navySteel-900/90 border border-slate-800 p-7 backdrop-blur-xl shadow-2xl relative">
+                    <div class="absolute -top-3 right-6 bg-emerald-500 text-slate-950 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5 shadow">
+                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Planta Operacional
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-avilaBlue-600/20 text-sky-400 flex items-center justify-center font-bold">
+                            <i data-lucide="factory" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-white font-display uppercase tracking-wide">
+                                Parque Fabril Ávila
+                            </h3>
+                            <span class="text-xs text-slate-400">Alagoinhas - BA</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                        Pronto atendimento para fabricação de peças sob desenho técnico, reformas de conjuntos mecânicos e suporte em manutenções programadas.
+                    </p>
+
+                    <div class="space-y-3 mb-6 text-sm">
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-navySteel-950/70 border border-slate-800">
+                            <i data-lucide="phone" class="w-4 h-4 text-sky-400 shrink-0"></i>
+                            <div>
+                                <div class="text-[10px] text-slate-400 uppercase font-semibold">Central Telefônica</div>
+                                <div class="font-bold text-white text-xs sm:text-sm">(75) 3422-1126</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-navySteel-950/70 border border-slate-800">
+                            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                            <div>
+                                <div class="text-[10px] text-slate-400 uppercase font-semibold">Engenharia & WhatsApp</div>
+                                <div class="font-bold text-white text-xs sm:text-sm">(75) 99915-0344</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-navySteel-950/70 border border-slate-800">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-industrialGold-400 shrink-0"></i>
+                            <div>
+                                <div class="text-[10px] text-slate-400 uppercase font-semibold">Localização</div>
+                                <div class="text-xs text-slate-200">Rod. BR-101, Coqueiral - Alagoinhas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5575999150344?text=Ol%C3%A1%2C%20preciso%20de%20um%20or%C3%A7amento%20para%20servi%C3%A7o%20industrial%20com%20a%20%C3%80vila" target="_blank" rel="noopener" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition duration-200 shadow">
+                        <i data-lucide="send" class="w-4 h-4"></i> Falar com Setor Técnico
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="empresa" class="py-24 bg-navySteel-950 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-sky-400 uppercase tracking-widest text-xs font-bold block">Sobre a Ávila Serviços Industriais</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase text-white tracking-tight">
+                        Solidez, Tecnologia e Pontualidade para a Indústria
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        A <strong>Ávila Serviços Industriais e Usinagem</strong> atua há mais de 12 anos fornecendo soluções de engenharia mecânica aplicada, usinagem leve e pesada, caldeiraria industrial e manutenção preventiva e corretiva para plantas industriais na Bahia e região Nordeste.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Investimos continuamente na modernização do nosso parque de máquinas e no aperfeiçoamento contínuo de nossos operadores, soldadores qualificados e mecânicos montadores para assegurar tolerâncias dimensionais rigorosas e confiabilidade operacional em paradas programadas.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-navySteel-900 border border-slate-800">
+                            <div class="text-2xl font-bold font-display text-industrialGold-400">100%</div>
+                            <div class="text-xs text-slate-300 mt-1 font-semibold">Compromisso com Normas</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">NR-12, NR-13, ASME e AWS</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-navySteel-900 border border-slate-800">
+                            <div class="text-2xl font-bold font-display text-sky-400">B2B</div>
+                            <div class="text-xs text-slate-300 mt-1 font-semibold">Foco Industrial</div>
+                            <div class="text-[11px] text-slate-500 mt-0.5">Contratos e demandas spot</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-56">
+                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Operação de torno mecânico Ávila Serviços" 
+                                     class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-44">
+                                <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Soldagem industrial qualificada" 
+                                     class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-6">
+                            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-44">
+                                <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Inspeção dimensional de precisão" 
+                                     class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-56">
+                                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Caldeiraria pesada e montagem" 
+                                     class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-24 bg-navySteel-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sky-400 uppercase tracking-widest text-xs font-bold block mb-2">Escopo de Atuação</span>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase text-white tracking-tight">
+                    Nossos Serviços Especializados
+                </h2>
+                <div class="w-20 h-1 bg-avilaBlue-500 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-400 mt-4 text-sm sm:text-base">
+                    Atendimento integral desde a usinagem de peças sobressalentes até a montagem e manutenção mecânica completa no site do cliente.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Usinagem Mecânica -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="disc" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Usinagem de Precisão</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Tornos mecânicos, fresadoras, mandrilhadoras e centros de usinagem. Fabricação de eixos, buchas, polias, engrenagens, flanges e roletes sob desenho ou amostra.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Recuperação de eixos desgastados</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Aço carbono, inox, bronze e nylon industrial</li>
+                    </ul>
+                </div>
+
+                <!-- Caldeiraria Industrial -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="flame" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Caldeiraria Média &amp; Pesada</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Conformação, calandragem, corte e dobra de chapas metálicas. Fabricação de dutos, tanques, silos, tremonhas, ciclones, carcaças e tubulações industriais.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Soldas qualificadas TIG, MIG/MAG e Eletrodo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Chapas em aço carbono e inoxidável</li>
+                    </ul>
+                </div>
+
+                <!-- Manutenção Industrial e Paradas -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="settings" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Manutenção Mecânica de Plantas</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Intervenções preventivas, corretivas e preditivas. Manutenção em esteiras transportadoras, redutores, bombas, moinhos, britadores e válvulas.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Equipes dedicadas para paradas programadas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Alinhamento a laser e nivelamento técnico</li>
+                    </ul>
+                </div>
+
+                <!-- Estruturas Metálicas Industriais -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Estruturas Metálicas &amp; Pipe-Racks</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Projetos, fabricação e montagem de galpões estruturais, pipe-racks para condução de fluidos, mezaninos industriais, plataformas de operação e passarelas.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Cumprimento das normas de segurança NR-35</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Pintura protetiva epóxi / galvanização</li>
+                    </ul>
+                </div>
+
+                <!-- Tubulações Industriais & Spools -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="git-commit" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Tubulações &amp; Spools</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Pré-fabricação e montagem de spools de tubulação para vapor, água de processo, ar comprimido, efluentes e produtos químicos em aço carbono e inox.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Testes hidrostáticos e controle de qualidade</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Rastreabilidade de materiais com certificado</li>
+                    </ul>
+                </div>
+
+                <!-- Engenharia Reversa e Desenhos Técnicos -->
+                <div class="rounded-2xl bg-navySteel-950 border border-slate-800 p-8 hover:border-sky-500/50 transition-all duration-300 group hover:-translate-y-1 shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mb-6 group-hover:bg-avilaBlue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="ruler" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-3">Engenharia Reversa &amp; Projetos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Digitalização e nacionalização de peças importadas, modelagem CAD 2D/3D, detalhamento para fabricação e desenvolvimento de melhorias mecânicas em maquinários.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Redução de lead time e custos de importação</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> Especificação precisa de materiais e tratamentos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Avila / Quality Metrics -->
+    <section id="diferenciais" class="py-24 bg-navySteel-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-sky-400 uppercase tracking-widest text-xs font-bold block">Confiabilidade Operacional</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase text-white tracking-tight">
+                        Por Que Grandes Indústrias Confiam na Ávila?
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Entendemos que cada hora de parada não programada em uma indústria representa prejuízos vultosos. Por isso, a <strong>Ávila Serviços Industriais</strong> pauta sua atuação na precisão milimétrica, no respeito aos cronogramas e na segurança máxima.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-5 rounded-2xl bg-navySteel-900 border border-slate-800 flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Respeito a Cronogramas</h4>
+                                <p class="text-xs text-slate-400 mt-1">Cumprimento rígido de janelas de manutenção e paradas de fábrica.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-navySteel-900 border border-slate-800 flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Segurança do Trabalho</h4>
+                                <p class="text-xs text-slate-400 mt-1">Equipe com ASO, EPIs, treinamentos NR e documentação em dia.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-navySteel-900 border border-slate-800 flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0">
+                                <i data-lucide="truck" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Localização Estratégica</h4>
+                                <p class="text-xs text-slate-400 mt-1">Às margens da BR-101 para rápido deslocamento a polos industriais.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-navySteel-900 border border-slate-800 flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Mais de 12 Anos no Mercado</h4>
+                                <p class="text-xs text-slate-400 mt-1">Empresa estabelecida com CNPJ 21.718.381/0001-19 idôneo e reconhecido.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://wa.me/5575999150344?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20visita%20t%C3%A9cnica%20ou%20reuni%C3%A3o" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-avilaBlue-600 hover:bg-avilaBlue-500 text-white font-bold text-sm transition glow-blue">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Agendar Reunião Técnica</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden border-2 border-slate-800 shadow-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" 
+                             alt="Instalações e Usinagem Industrial Ávila Serviços Alagoinhas" 
+                             class="w-full h-[480px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navySteel-950 via-navySteel-950/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-navySteel-900/95 backdrop-blur-md border border-slate-700">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-avilaBlue-600 text-white flex items-center justify-center font-black">
+                                    <i data-lucide="check-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white text-sm uppercase">Ávila Serviços Industriais e Usinagem</h5>
+                                    <p class="text-xs text-slate-300">Rodovia BR-101, SN - Coqueiral, Alagoinhas - BA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrial Quote Form -->
+    <section id="orcamento" class="py-24 bg-navySteel-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-sky-400 uppercase tracking-widest text-xs font-bold block mb-2">Canal Direto de Engenharia</span>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold uppercase text-white tracking-tight">
+                    Solicite sua Cotação Industrial
+                </h2>
+                <p class="text-slate-400 text-sm mt-2">
+                    Envie os parâmetros do seu projeto ou peça para receber o parecer técnico da nossa equipe de engenharia.
+                </p>
+            </div>
+
+            <div class="rounded-3xl bg-navySteel-950 border border-slate-800 p-6 sm:p-10 shadow-2xl">
+                <form id="industrialQuoteForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Service Type -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Segmento do Serviço</label>
+                            <select id="quoteService" class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm">
+                                <option value="Usinagem Mecânica de Precisão">Usinagem Mecânica de Peças (Torno/Fresa)</option>
+                                <option value="Caldeiraria Média e Pesada">Caldeiraria Média &amp; Pesada / Tanques / Dutos</option>
+                                <option value="Manutenção em Parada de Fábrica">Manutenção Mecânica / Parada de Fábrica</option>
+                                <option value="Estruturas Metálicas e Plataformas">Estruturas Metálicas, Mezaninos e Passarelas</option>
+                                <option value="Spools e Tubulações Industriais">Tubulações Industriais / Spools</option>
+                                <option value="Engenharia Reversa e Desenhos">Engenharia Reversa e Nacionalização de Peças</option>
+                                <option value="Outro Serviço sob Demanda">Outro Serviço Industrial Específico</option>
+                            </select>
+                        </div>
+
+                        <!-- Urgency / Deadline -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Prazo Desejado</label>
+                            <select id="quoteUrgency" class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm">
+                                <option value="Normal (Planejamento)">Normal (Projeto em planejamento)</option>
+                                <option value="Urgente (Parada em breve)">Urgente (Parada programada próxima)</option>
+                                <option value="Emergencial (Linha parada)">Emergencial (Linha de produção afetada)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Company Name -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Empresa / Razão Social</label>
+                            <input type="text" id="quoteCompany" placeholder="Ex: Cervejaria, Usina, Indústria..." required
+                                   class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm placeholder-slate-500">
+                        </div>
+
+                        <!-- Contact Person -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Seu Nome &amp; Cargo</label>
+                            <input type="text" id="quoteName" placeholder="Ex: Roberto - Eng. de Manutenção" required
+                                   class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm placeholder-slate-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- City/Location -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Cidade da Planta / Entrega</label>
+                            <input type="text" id="quoteCity" placeholder="Ex: Alagoinhas - BA, Camaçari, Salvador..." required
+                                   class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm placeholder-slate-500">
+                        </div>
+
+                        <!-- Phone / WhatsApp -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Telefone de Contato</label>
+                            <input type="tel" id="quotePhone" placeholder="Ex: (75) 99999-9999" required
+                                   class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm placeholder-slate-500">
+                        </div>
+                    </div>
+
+                    <!-- Scope Description -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Descrição dos Materiais / Escopo Técnico</label>
+                        <textarea id="quoteDetails" rows="3" placeholder="Ex: Fabricação de 4 eixos em aço 1045 conforme desenho em anexo, com retífica..."
+                                  class="w-full px-4 py-3 rounded-xl bg-navySteel-900 border border-slate-700 text-white focus:outline-none focus:border-avilaBlue-500 text-sm placeholder-slate-500"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button type="submit" class="py-4 rounded-xl bg-gradient-to-r from-avilaBlue-600 to-indigo-600 hover:from-avilaBlue-500 hover:to-indigo-500 text-white font-display font-bold text-base uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-3 glow-blue">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            <span>Enviar via WhatsApp (75) 99915-0344</span>
+                        </button>
+                        <a href="mailto:contato@avilaservicos.com.br?subject=Solicitacao%20de%20Cotacao%20Industrial%20-%20Avila%20Servicos" class="py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-display font-bold text-base uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-sky-400"></i>
+                            <span>Enviar por E-mail</span>
+                        </a>
+                    </div>
+                    <p class="text-center text-xs text-slate-400">
+                        Atendimento comercial de Segunda a Quinta: 07:00 às 17:00 | Sexta: 07:00 às 16:00.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="contato" class="py-24 bg-navySteel-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-sky-400 uppercase tracking-widest text-xs font-bold block mb-2">Infraestrutura Fabril</span>
+                        <h2 class="text-3xl font-display font-bold uppercase text-white tracking-tight">Onde Estamos</h2>
+                        <p class="text-slate-400 text-sm mt-2">Visite nossa planta ou entre em contato com nosso departamento comercial.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Phone & Mobile -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-navySteel-900 border border-slate-800">
+                            <div class="w-12 h-12 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold">Telefones Oficiais</span>
+                                <div class="text-sm font-bold text-white mt-0.5">
+                                    <a href="tel:7534221126" class="hover:text-sky-400 transition">(75) 3422-1126</a> / 
+                                    <a href="https://wa.me/5575999150344" target="_blank" class="hover:text-emerald-400 transition text-emerald-400">(75) 99915-0344 (WhatsApp)</a>
+                                </div>
+                                <p class="text-xs text-slate-500">Atendimento comercial e engenharia</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-navySteel-900 border border-slate-800">
+                            <div class="w-12 h-12 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold">E-mail Corporativo</span>
+                                <a href="mailto:contato@avilaservicos.com.br" class="block text-sm font-bold text-white hover:text-sky-400 transition">
+                                    contato@avilaservicos.com.br
+                                </a>
+                                <p class="text-xs text-slate-500">Envio de desenhos técnicos em PDF/DWG</p>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-navySteel-900 border border-slate-800">
+                            <div class="w-12 h-12 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold">Endereço da Planta</span>
+                                <h4 class="text-sm font-bold text-white">Rodovia Governador Mário Covas (BR-101), SN</h4>
+                                <p class="text-xs text-slate-400">Bairro Coqueiral, Alagoinhas - Bahia, CEP 48010-611</p>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-navySteel-900 border border-slate-800">
+                            <div class="w-12 h-12 rounded-xl bg-avilaBlue-600/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold">Expediente Industrial</span>
+                                <p class="text-sm text-slate-200 font-semibold">Segunda a Quinta: 07:00 às 17:00</p>
+                                <p class="text-xs text-slate-400">Sexta-feira: 07:00 às 16:00 | Sábado e Domingo: Fechado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Frame -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl h-full min-h-[440px] flex flex-col bg-navySteel-900">
+                        <div class="p-4 bg-navySteel-950 border-b border-slate-800 flex items-center justify-between text-xs text-slate-300">
+                            <span class="flex items-center gap-2"><i data-lucide="map" class="w-4 h-4 text-sky-400"></i> ÁVILA SERVIÇOS INDUSTRIAIS - BR-101 Alagoinhas</span>
+                            <a href="https://maps.google.com/?cid=6488732851439661792" target="_blank" rel="noopener" class="text-sky-400 hover:underline flex items-center gap-1 font-semibold">
+                                Abrir no Google Maps <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                        <div class="relative flex-1 w-full min-h-[400px]">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=-12.1072627,-38.382277&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                class="absolute inset-0 w-full h-full border-0 filter grayscale contrast-125 opacity-90 hover:grayscale-0 transition-all duration-300" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navySteel-950 border-t border-slate-800 py-12 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-avilaBlue-600 text-white flex items-center justify-center font-bold">
+                        <i data-lucide="cog" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <span class="text-white font-display uppercase tracking-wider font-bold text-sm block">ÁVILA SERVIÇOS INDUSTRIAIS E USINAGEM LTDA</span>
+                        <span>CNPJ: 21.718.381/0001-19 • Rodovia BR-101 SN, Coqueiral, Alagoinhas/BA &copy; <span id="currentYear"></span></span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-6 text-slate-400">
+                    <a href="#inicio" class="hover:text-sky-400 transition">Início</a>
+                    <a href="#empresa" class="hover:text-sky-400 transition">A Empresa</a>
+                    <a href="#servicos" class="hover:text-sky-400 transition">Serviços</a>
+                    <a href="#diferenciais" class="hover:text-sky-400 transition">Diferenciais</a>
+                    <a href="#orcamento" class="hover:text-sky-400 transition">Cotação</a>
+                    <a href="#contato" class="hover:text-sky-400 transition">Contato</a>
+                    <button id="btnDownloadZipFooter" class="text-sky-400 hover:underline flex items-center gap-1 font-semibold">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i> Baixar ZIP HostGator
+                    </button>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-900 text-center text-slate-500">
+                Usinagem mecânica, caldeiraria pesada, montagem e manutenção industrial em Alagoinhas, Polo Petroquímico de Camaçari e toda a Bahia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- HostGator ZIP Generator Modal -->
+    <div id="hostgatorModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-navySteel-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-left">
+            <button id="closeModalBtn" class="absolute top-5 right-5 text-slate-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-xl bg-avilaBlue-600/20 text-sky-400 flex items-center justify-center mb-4 border border-sky-500/30">
+                <i data-lucide="server" class="w-6 h-6"></i>
+            </div>
+
+            <h3 class="text-xl font-bold font-display uppercase tracking-wide text-white mb-2">
+                Pacote HostGator Pronto!
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 mb-4 leading-relaxed">
+                O arquivo <strong class="text-sky-400">avila-servicos-hostgator.zip</strong> contém os arquivos ideais para publicar diretamente no cPanel da HostGator:
+            </p>
+
+            <div class="bg-navySteel-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs text-slate-300 font-mono mb-6">
+                <div class="flex items-center gap-2"><i data-lucide="file-code" class="w-4 h-4 text-sky-400"></i> index.html (Site Oficial Ávila Serviços)</div>
+                <div class="flex items-center gap-2"><i data-lucide="file-cog" class="w-4 h-4 text-emerald-400"></i> .htaccess (HTTPS Forçado, Cache e Gzip)</div>
+                <div class="flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-industrialGold-400"></i> robots.txt (Indexação SEO no Google)</div>
+                <div class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-purple-400"></i> INSTRUCOES-HOSTGATOR.txt (Passo a passo cPanel)</div>
+            </div>
+
+            <div class="space-y-3">
+                <button id="btnTriggerZipDownload" class="w-full py-3.5 rounded-xl bg-avilaBlue-600 hover:bg-avilaBlue-500 text-white font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-2 transition glow-blue">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span>Baixar Arquivo ZIP Agora</span>
+                </button>
+                <div id="zipStatusMsg" class="text-center text-xs text-sky-400 hidden font-medium"></div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+                <strong>Publicação no cPanel:</strong> Abra o <em>Gerenciador de Arquivos</em> &rarr; acesse <code>public_html</code> &rarr; clique em <em>Carregar</em> &rarr; envie o ZIP &rarr; clique com o botão direito e selecione <em>Extract</em>.
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/5575999150344?text=Ol%C3%A1%2C%20gostaria%20de%20um%20atendimento%20t%C3%A9cnico%20com%20a%20%C3%80vila%20Servi%C3%A7os%20Industriais" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Atendimento Ávila via WhatsApp"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/50 hover:scale-110 active:scale-95 transition-all duration-200">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Dynamic Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // WhatsApp Quote Submission
+        const industrialQuoteForm = document.getElementById('industrialQuoteForm');
+        industrialQuoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const service = document.getElementById('quoteService').value;
+            const urgency = document.getElementById('quoteUrgency').value;
+            const company = document.getElementById('quoteCompany').value;
+            const name = document.getElementById('quoteName').value;
+            const city = document.getElementById('quoteCity').value;
+            const phoneUser = document.getElementById('quotePhone').value;
+            const details = document.getElementById('quoteDetails').value;
+
+            const phoneDestination = "5575999150344";
+
+            const message = `*SOLICITAÇÃO DE COTAÇÃO - ÁVILA SERVIÇOS INDUSTRIAIS*%0A%0A` +
+                            `🏭 *Empresa:* ${encodeURIComponent(company)}%0A` +
+                            `👤 *Contato:* ${encodeURIComponent(name)}%0A` +
+                            `📞 *Telefone:* ${encodeURIComponent(phoneUser)}%0A` +
+                            `📍 *Localização da Planta:* ${encodeURIComponent(city)}%0A` +
+                            `⚙️ *Segmento:* ${encodeURIComponent(service)}%0A` +
+                            `⏱️ *Prioridade:* ${encodeURIComponent(urgency)}%0A` +
+                            `📝 *Escopo/Detalhes:* ${encodeURIComponent(details || 'Sem detalhes informados')}%0A%0A` +
+                            `Gostaria de agendar contato técnico ou receber estimativa de custos. Obrigado!`;
+
+            window.open(`https://wa.me/${phoneDestination}?text=${message}`, '_blank');
+        });
+
+        // ----------------------------------------------------
+        // HostGator ZIP Generator
+        // ----------------------------------------------------
+        const modal = document.getElementById('hostgatorModal');
+        const openTop = document.getElementById('btnDownloadZipTop');
+        const openFooter = document.getElementById('btnDownloadZipFooter');
+        const closeModal = document.getElementById('closeModalBtn');
+        const triggerDownload = document.getElementById('btnTriggerZipDownload');
+        const zipStatus = document.getElementById('zipStatusMsg');
+
+        const showModal = () => modal.classList.remove('hidden');
+        const hideModal = () => modal.classList.add('hidden');
+
+        if (openTop) openTop.addEventListener('click', showModal);
+        if (openFooter) openFooter.addEventListener('click', showModal);
+        if (closeModal) closeModal.addEventListener('click', hideModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) hideModal();
+        });
+
+        triggerDownload.addEventListener('click', async () => {
+            try {
+                zipStatus.textContent = "Gerando pacote ZIP para HostGator...";
+                zipStatus.classList.remove('hidden');
+
+                const zip = new JSZip();
+
+                // 1. Obter o HTML limpo da página atual
+                const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+                zip.file("index.html", htmlContent);
+
+                // 2. Arquivo .htaccess configurado para Apache HostGator
+                const htaccessContent = `# Configuração Apache HostGator - Ávila Serviços Industriais
+RewriteEngine On
+
+# Forçar HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Habilitar Compressão Gzip para performance máxima
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+# Cache de Navegador para ativos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Proteção de listagem de diretórios
+Options -Indexes
+`;
+                zip.file(".htaccess", htaccessContent);
+
+                // 3. Arquivo robots.txt
+                const robotsContent = `User-agent: *
+Allow: /
+Sitemap: https://avilaservicos.com.br/sitemap.xml
+`;
+                zip.file("robots.txt", robotsContent);
+
+                // 4. Guia passo a passo de publicação no cPanel
+                const instructionsContent = `=============================================================
+GUIA DE INSTALAÇÃO NA HOSTGATOR (cPanel)
+Empresa: ÁVILA SERVIÇOS INDUSTRIAIS E USINAGEM LTDA
+CNPJ: 21.718.381/0001-19 - Alagoinhas - Bahia
+=============================================================
+
+1. Acesse o painel da HostGator (cPanel):
+   https://seudominio.com.br/cpanel (ou pelo portal do cliente HostGator)
+
+2. No cPanel, clique em "Gerenciador de Arquivos" (File Manager).
+
+3. Entre na pasta raiz do site:
+   public_html
+
+4. No menu superior, clique em "Carregar" (Upload) e selecione este arquivo:
+   avila-servicos-hostgator.zip
+
+5. Ao terminar o carregamento (barra verde 100%), volte para a pasta public_html,
+   clique com o botão direito no ZIP e selecione "Extract" (Extrair).
+
+6. Verifique se os seguintes arquivos estão diretamente dentro de public_html:
+   - index.html
+   - .htaccess
+   - robots.txt
+
+7. Pronto! Seu site estará online com conexão HTTPS segura, navegação veloz e integração direta para o WhatsApp (75) 99915-0344 e e-mail contato@avilaservicos.com.br.
+`;
+                zip.file("INSTRUCOES-HOSTGATOR.txt", instructionsContent);
+
+                // Gerar o ZIP e disparar download
+                const blob = await zip.generateAsync({ type: "blob" });
+                const downloadUrl = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = downloadUrl;
+                a.download = "avila-servicos-hostgator.zip";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(downloadUrl);
+
+                zipStatus.textContent = "✓ Download iniciado com sucesso!";
+            } catch (err) {
+                console.error(err);
+                zipStatus.textContent = "Erro ao gerar o ZIP. Tente novamente.";
+            }
+        });
+    </script>
+</body>
+</html>

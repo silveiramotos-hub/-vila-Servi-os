@@ -1,0 +1,6 @@
+{
+  "name": "Ávila Serviços Industriais e Usinagem",
+  "description": "Soluções de alta precisão em usinagem mecânica, caldeiraria média e pesada, tubulações industriais e manutenção de plantas em Alagoinhas - BA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
